@@ -105,8 +105,6 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Install]
 WantedBy=multi-user.target
 
-> Note: Do not include User= to run as root.
-
 
 
 3. Reload systemd and start service
