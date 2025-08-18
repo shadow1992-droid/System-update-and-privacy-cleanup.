@@ -2,9 +2,7 @@
 
 This repository contains a bash script to automatically update your Ubuntu system, including packages and firmware, with optional systemd integration to run it as a service.
 
-
 ---
-
 
 # Description:
 This script updates your Ubuntu system safely, performing package upgrades, cleaning unused packages, and updating firmware.
@@ -66,7 +64,6 @@ fwupdmgr update
 
 echo "System update complete. ✅"
 
-
 ---
 
 Run Script as a Systemd Service
@@ -114,7 +111,6 @@ sudo systemctl enable --now auto-update.service
 4. Check service logs
 
 journalctl -u auto-update.service -e
-
 
 ---
 
