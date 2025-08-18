@@ -47,5 +47,5 @@ fwupdmgr get-updates
 echo "Applying firmware updates (if any)..."
 fwupdmgr update
 
-echo "Shauns System update complete. ✅"
+echo "System update complete. ✅"
 
