@@ -1,13 +1,30 @@
-**script code...**
+Auto-Update Script for Ubuntu
+
+This repository contains a bash script to automatically update your Ubuntu system, including packages and firmware, with optional systemd integration to run it as a service.
+
+
+---
+
+Script: auto-update.sh
+
+Description:
+This script updates your Ubuntu system safely, performing package upgrades, cleaning unused packages, and updating firmware.
+
+Usage:
+
+sudo /path/to/auto-update.sh
+
+Script Content:
+
 #!/bin/bash
 
-# Must be run as root
+# Ensure script is run as root
 if [[ $EUID -ne 0 ]]; then
   echo "Please run this script with sudo or as root."
   exit 1
 fi
 
-echo "Starting Shauns Ubuntu system update..."
+echo "Starting system update..."
 
 # Disable phased updates
 echo 'APT::Get::Always-Include-Phased-Updates "true";' > /etc/apt/apt.conf.d/99phased-updates
@@ -30,11 +47,11 @@ apt -y -o Dpkg::Options::="--force-confdef" \
        -o Dpkg::Options::="--force-confold" \
 full-upgrade
 
-# Autoremove unused packages
+# Remove old packages
 echo "Autoremoving old packages..."
 apt -y autoremove
 
-# Clean up cache
+# Clean package cache
 echo "Cleaning up..."
 apt clean
 
@@ -48,14 +65,32 @@ fwupdmgr get-updates
 echo "Applying firmware updates (if any)..."
 fwupdmgr update
 
-echo "Shauns System update complete. ✅"
+echo "System update complete. ✅"
 
 
-**Make run as systemd service...**
-sudo visudo:    Added line: my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
-Edit sudoers (sudo visudo) → Allow my-pc to run auto-update.sh as root without a password.
+---
 
-sudo nano /etc/systemd/system/auto-update.service:    Create systemd service (sudo nano /etc/systemd/system/auto-update.service) → Define the script as a service.
+Run Script as a Systemd Service
+
+You can run this script automatically as a systemd service.
+
+1. Allow passwordless sudo for the script
+
+Edit sudoers:
+
+sudo visudo
+
+Add the line (replace my-pc and path as needed):
+
+my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
+
+2. Create systemd service
+
+Create the service file:
+
+sudo nano /etc/systemd/system/auto-update.service
+
+Add the following:
 
 [Unit]
 Description=Run Auto Update Script
@@ -64,15 +99,26 @@ After=network.target
 [Service]
 ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
 Restart=on-failure
-# Remove User= line so it defaults to root
 WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 [Install]
 WantedBy=multi-user.target
 
-sudo systemctl daemon-reload:  Reload systemd sudo systemctl daemon-reload) → Apply the new service configuration.
+> Note: Do not include User= to run as root.
 
-sudo systemctl restart auto-update.service:  Start/restart service (sudo systemctl restart auto-update.service) → Run the script via systemd.
 
-journalctl -u auto-update.service -e:    Check logs (journalctl -u auto-update.service -e) → View the service output and any errors.
+
+3. Reload systemd and start service
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now auto-update.service
+
+4. Check service logs
+
+journalctl -u auto-update.service -e
+
+
+---
+
+✅ Your Ubuntu system will now update automatically via systemd.
