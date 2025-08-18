@@ -8,7 +8,7 @@ Automatically update your Ubuntu system, including packages and firmware, with o
 
 ---
 
-Features
+# Features
 
 Updates package lists
 
@@ -24,7 +24,7 @@ Can run automatically as a systemd service
 
 ---
 
-Usage
+# Usage
 
 Run the script manually:
 
