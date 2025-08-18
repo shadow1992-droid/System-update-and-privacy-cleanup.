@@ -1,20 +1,20 @@
-Auto-Update Script for Ubuntu
+# Auto-Update Script for Ubuntu
 
 This repository contains a bash script to automatically update your Ubuntu system, including packages and firmware, with optional systemd integration to run it as a service.
 
 
 ---
 
-Script: auto-update.sh
+# Script: auto-update.sh
 
-Description:
+# Description:
 This script updates your Ubuntu system safely, performing package upgrades, cleaning unused packages, and updating firmware.
 
-Usage:
+# Usage:
 
 sudo /path/to/auto-update.sh
 
-Script Content:
+# Script Content:
 
 #!/bin/bash
 
