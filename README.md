@@ -89,9 +89,9 @@ echo "System update complete. ✅"
 
 ---
 
-Run Script as a Systemd Service
+# Run Script as a Systemd Service
 
-1. Allow passwordless sudo for the script
+# 1. Allow passwordless sudo for the script
 
 
 
@@ -103,7 +103,7 @@ Add the line (replace my-pc and script path):
 
 my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
 
-2. Create systemd service
+# 2. Create systemd service
 
 
 
@@ -131,7 +131,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
 
-4. Check service logs
+# 4. Check service logs
 
 
 
