@@ -1,17 +1,39 @@
-# Auto-Update Script for Ubuntu
-
-This repository contains a bash script to automatically update your Ubuntu system, including packages and firmware, with optional systemd integration to run it as a service.
 
 ---
 
-# Description:
-This script updates your Ubuntu system safely, performing package upgrades, cleaning unused packages, and updating firmware.
+Ubuntu Auto-Update Script
 
-# Usage:
+Automatically update your Ubuntu system, including packages and firmware, with optional systemd integration for running it as a service.
+
+
+---
+
+Features
+
+Updates package lists
+
+Performs safe package upgrades (upgrade + full-upgrade)
+
+Cleans up unused packages and cache (autoremove, clean)
+
+Updates firmware via fwupd
+
+Can run automatically as a systemd service
+
+
+
+---
+
+Usage
+
+Run the script manually:
 
 sudo /path/to/auto-update.sh
 
-# Script Content:
+
+---
+
+Script Content
 
 #!/bin/bash
 
@@ -64,29 +86,30 @@ fwupdmgr update
 
 echo "System update complete. ✅"
 
+
 ---
 
 Run Script as a Systemd Service
 
-You can run this script automatically as a systemd service.
-
 1. Allow passwordless sudo for the script
+
+
 
 Edit sudoers:
 
 sudo visudo
 
-Add the line (replace my-pc and path as needed):
+Add the line (replace my-pc and script path):
 
 my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
 
 2. Create systemd service
 
-Create the service file:
+
 
 sudo nano /etc/systemd/system/auto-update.service
 
-Add the following:
+Add:
 
 [Unit]
 Description=Run Auto Update Script
@@ -101,17 +124,20 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Install]
 WantedBy=multi-user.target
 
+3. Enable and start the service
 
 
-3. Reload systemd and start service
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
 
 4. Check service logs
 
+
+
 journalctl -u auto-update.service -e
+
 
 ---
 
-✅ Your Ubuntu system will now update automatically via systemd.
+✅ Your Ubuntu system will now update automatically using systemd.
