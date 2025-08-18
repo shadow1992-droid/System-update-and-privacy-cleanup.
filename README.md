@@ -1,3 +1,4 @@
+**script code...**
 #!/bin/bash
 
 # Must be run as root
@@ -50,7 +51,7 @@ fwupdmgr update
 echo "Shauns System update complete. ✅"
 
 
-
+**Make run as systemd service...**
 sudo visudo:    Added line: my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
 Edit sudoers (sudo visudo) → Allow my-pc to run auto-update.sh as root without a password.
 
