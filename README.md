@@ -1,7 +1,7 @@
 
 ---
 
-Ubuntu Auto-Update Script
+# Ubuntu Auto-Update Script
 
 Automatically update your Ubuntu system, including packages and firmware, with optional systemd integration for running it as a service.
 
