@@ -5,7 +5,6 @@ This repository contains a bash script to automatically update your Ubuntu syste
 
 ---
 
-Script: auto-update.sh
 
 # Description:
 This script updates your Ubuntu system safely, performing package upgrades, cleaning unused packages, and updating firmware.
