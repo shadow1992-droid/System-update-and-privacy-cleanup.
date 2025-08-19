@@ -124,7 +124,7 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Install]
 WantedBy=multi-user.target
 
-3. Enable and start the service
+# 3. Enable and start the service
 
 
 
