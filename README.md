@@ -1,143 +1,105 @@
-
----
-
-# Ubuntu Auto-Update Script
-
-Automatically update your Ubuntu system, including packages and firmware, with optional systemd integration for running it as a service.
-
-
----
-
-# Features
-
+Shaun's Ubuntu Update & Privacy Script (Lite Version)
+A safer, balanced version of the update script that:
+Keeps important system logs for troubleshooting
+Performs full system + firmware updates
+Cleans unnecessary caches and temporary files
+Reduces (not destroys) trace data
+⚙️ Features
+🔄 System Updates
+Enables phased updates bypass
 Updates package lists
+Runs:
+apt upgrade
+apt full-upgrade
+Removes unused packages (autoremove)
+Cleans package cache
+💻 Firmware Updates
+Refreshes firmware metadata
+Checks for updates
+Applies updates via fwupdmgr
+🔒 Privacy (Lite Mode)
+This version is non-destructive and keeps logs useful for debugging.
+🧾 Logs (Preserved & Trimmed)
+System logs are rotated instead of deleted
+Journal logs reduced to a reasonable size (e.g. last few days)
+APT and dpkg logs are kept
+✔ Helps with:
+Debugging issues
+Reviewing update history
+System auditing
+🌐 Network & Tool Cleanup
+Removes:
+wget HSTS files
+Keeps:
+curl configs (can contain user settings)
+🧑‍💻 User Trace Cleanup
+Clears:
+Thumbnail cache
+Temporary files (/tmp, /var/tmp)
+Does NOT remove:
+Bash history
+User configuration files
+🌍 Browser Cleanup (Safe)
+Clears cache only
+Keeps:
+History
+Cookies
+Logins
+Sessions
+Supported:
+Firefox / Mozilla
+Chrome / Chromium
+Brave
+🚀 Usage
+1. Save the script
+Bash
+nano update-lite.sh
+2. Make executable
+Bash
+chmod +x update-lite.sh
+3. Run
+Bash
+sudo ./update-lite.sh
+⚠️ Key Differences (Lite vs Full)
+Feature
+Full Version ❌
+Lite Version ✅
+System logs
+Deleted
+Rotated/kept
+Bash history
+Removed
+Preserved
+Browser data
+Wiped
+Cache only
+APT/dpkg logs
+Deleted
+Preserved
+Debugging ability
+Limited
+Maintained
+🛠 Recommended Log Retention
+You can tweak this line in the script:
+Bash
+journalctl --vacuum-time=7d
+Examples:
+3d → minimal logs
+7d → balanced (recommended)
+14d → more history
+❗ Notes
+Still requires sudo
+Safe for daily/weekly use
+Ideal for:
+Personal systems
+Developers
+Anyone who wants privacy without breaking diagnostics
+✅ Output
 
-Performs safe package upgrades (upgrade + full-upgrade)
-
-Cleans up unused packages and cache (autoremove, clean)
-
-Updates firmware via fwupd
-
-Can run automatically as a systemd service
-
-
-
----
-
-# Usage
-
-Run the script manually:
-
-sudo /path/to/auto-update.sh
-
-
----
-
-Script Content
-
-#!/bin/bash
-
-# Ensure script is run as root
-if [[ $EUID -ne 0 ]]; then
-  echo "Please run this script with sudo or as root."
-  exit 1
-fi
-
-echo "Starting system update..."
-
-# Disable phased updates
-echo 'APT::Get::Always-Include-Phased-Updates "true";' > /etc/apt/apt.conf.d/99phased-updates
-
-# Update package list
-echo "Updating package list..."
-apt update
-
-# Upgrade installed packages
-echo "Upgrading installed packages..."
-DEBIAN_FRONTEND=noninteractive \
-apt -y -o Dpkg::Options::="--force-confdef" \
-       -o Dpkg::Options::="--force-confold" \
-upgrade
-
-# Full upgrade (handles dependencies and kernel)
-echo "Performing full upgrade..."
-DEBIAN_FRONTEND=noninteractive \
-apt -y -o Dpkg::Options::="--force-confdef" \
-       -o Dpkg::Options::="--force-confold" \
-full-upgrade
-
-# Remove old packages
-echo "Autoremoving old packages..."
-apt -y autoremove
-
-# Clean package cache
-echo "Cleaning up..."
-apt clean
-
-# Update firmware via fwupd
-echo "Refreshing firmware metadata..."
-fwupdmgr refresh
-
-echo "Checking for firmware updates..."
-fwupdmgr get-updates
-
-echo "Applying firmware updates (if any)..."
-fwupdmgr update
-
-echo "System update complete. ✅"
-
-
----
-
-# Run Script as a Systemd Service
-
-# 1. Allow passwordless sudo for the script
-
-
-
-Edit sudoers:
-
-sudo visudo
-
-Add the line (replace my-pc and script path):
-
-my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
-
-# 2. Create systemd service
-
-
-
-sudo nano /etc/systemd/system/auto-update.service
-
-Add:
-
-[Unit]
-Description=Run Auto Update Script
-After=network.target
-
-[Service]
-ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
-Restart=on-failure
-WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
-Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-[Install]
-WantedBy=multi-user.target
-
-# 3. Enable and start the service
-
-
-
-sudo systemctl daemon-reload
-sudo systemctl enable --now auto-update.service
-
-# 4. Check service logs
-
-
-
-journalctl -u auto-update.service -e
-
-
----
-
-✅ Your Ubuntu system will now update automatically using systemd.
+System update and light cleanup complete. ✅
+📄 License
+Free to use and modify. No warranty.
+If you want next step, I can also:
+�⁠Write the actual lite script version to match this README
+�⁠Add log size limits instead of time-based cleanup
+�⁠Turn it into an automatic weekly maintenance job
