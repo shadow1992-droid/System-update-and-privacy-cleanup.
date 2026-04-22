@@ -67,3 +67,54 @@ Non-destructive cleanup that improves privacy without breaking diagnostics.
 nano update-lite.sh
 chmod +x update-lite.sh
 sudo ./update-lite.sh
+
+---
+
+# Run Script as a Systemd Service
+
+# 1. Allow passwordless sudo for the script
+
+
+
+Edit sudoers:
+
+sudo visudo
+
+Add the line (replace my-pc and script path):
+
+my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
+
+# 2. Create systemd service
+
+
+
+sudo nano /etc/systemd/system/auto-update.service
+
+Add:
+
+[Unit]
+Description=Run Auto Update Script
+After=network.target
+
+[Service]
+ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
+Restart=on-failure
+WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[Install]
+WantedBy=multi-user.target
+
+3. Enable and start the service
+# 3. Enable and start the service
+
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now auto-update.service
+
+# 4. Check service logs
+
+
+
+journalctl -u auto-update.service -e
