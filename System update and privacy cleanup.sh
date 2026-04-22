@@ -62,7 +62,7 @@ rm -f /var/log/dpkg.log
 
 # Rotate & aggressively clear system journal logs
 journalctl --rotate
-journalctl --vacuum-time=1s
+vacuum-time=7d
 
 # Clear auth + syslog (network/login traces)
 truncate -s 0 /var/log/auth.log 2>/dev/null
