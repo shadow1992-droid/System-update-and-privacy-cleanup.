@@ -126,4 +126,4 @@ echo "Cleaning temporary files..."
 rm -rf /tmp/*
 rm -rf /var/tmp/*
 
-echo "System update and privacy cleanup complete. ✅"
+echo "Shaun's Ubuntu system update and privacy cleanup complete. ✅"
