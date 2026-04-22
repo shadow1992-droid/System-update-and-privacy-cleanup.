@@ -97,7 +97,7 @@ resolvectl flush-caches 2>/dev/null
 echo "Cleaning Brave browser data..."
 
 # Remove cache
-rm -rf /home/*/.cache/BraveSoftware/Brave-Browser/* 2>/dev/null
+# rm -rf /home/*/.cache/BraveSoftware/Brave-Browser/* 2>/dev/null
 
 # Remove browsing data (history, cookies, logins, etc.)
 find /home/*/.config/BraveSoftware/Brave-Browser/ -type f \( \
