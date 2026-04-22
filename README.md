@@ -75,8 +75,8 @@ Edit sudoers:
 sudo visudo
 Add (replace username and path):
 Bash
-my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/System update and privacy cleanup.sh
-## 2. Create Service sudo nano /etc/systemd/System update and privacy cleanup.
+my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/System-update-and-privacy-cleanup.sh
+## 2. Create Service sudo nano /etc/systemd/System-update-and-privacy-cleanup.
 
 [Unit]
 Description=Automatic System Update Script
@@ -84,7 +84,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/my-pc/Documents/Notes/Scripts/System update and privacy cleanup.sh
+ExecStart=/home/my-pc/Documents/Notes/Scripts/System-update-and-privacy-cleanup.sh
 WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
 Restart=on-failure
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -99,5 +99,5 @@ sudo systemctl enable --now auto-update.service
 ## 4. Check Logs
 journalctl -u auto-update.service -e
 ## 🚀 Usage
-nano System update and privacy cleanup.sh
-sudo ./System update and privacy cleanup.sh
+nano Syste-update-and-privacy-cleanup.sh
+sudo ./System-update-and-privacy-cleanup.sh
