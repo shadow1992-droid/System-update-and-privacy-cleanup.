@@ -79,8 +79,6 @@ my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
 ## 2. Create Service
 sudo nano /etc/systemd/system/auto-update.service
 
-Paste:
-
 [Unit]
 Description=Automatic System Update Script
 After=network.target
@@ -106,7 +104,5 @@ journalctl -u auto-update.service -e
 
 ## 🚀 Usage
 
-bash
-nano update-lite.sh
-chmod +x update-lite.sh
-sudo ./update-lite.sh
+nano System update and privacy cleanup.sh
+sudo ./System update and privacy cleanup.sh
