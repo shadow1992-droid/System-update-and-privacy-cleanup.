@@ -70,13 +70,13 @@ sudo ./update-lite.sh
 
 ---
 
-# Run Script as a Systemd Service
+## Run Script as a Systemd Service
 
-# 1. Allow passwordless sudo for the script
+## 1. Allow passwordless sudo for the script
 
 
 
-Edit sudoers:
+## Edit sudoers:
 
 sudo visudo
 
@@ -106,14 +106,14 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 WantedBy=multi-user.target
 
 3. Enable and start the service
-# 3. Enable and start the service
+## 3. Enable and start the service
 
 
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
 
-# 4. Check service logs
+## 4. Check service logs
 
 
 
