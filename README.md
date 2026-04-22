@@ -1,4 +1,4 @@
-LPLP# 🛡️ Shaun’s Ubuntu Update & Privacy Script
+## 🛡️ Shaun’s Ubuntu Update & Privacy Script
 
 A balanced update and cleanup script that keeps your system secure, clean, and still debuggable.
 
