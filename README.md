@@ -76,8 +76,7 @@ sudo visudo
 Add (replace username and path):
 Bash
 my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
-## 2. Create Service
-sudo nano /etc/systemd/system/auto-update.service
+## 2. Create Service sudo nano /etc/systemd/system/auto-update.service
 
 [Unit]
 Description=Automatic System Update Script
@@ -98,11 +97,7 @@ Bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
 ## 4. Check Logs
-Bash
 journalctl -u auto-update.service -e
-
-
 ## 🚀 Usage
-
 nano System update and privacy cleanup.sh
 sudo ./System update and privacy cleanup.sh
