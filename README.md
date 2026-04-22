@@ -70,51 +70,43 @@ sudo ./update-lite.sh
 
 ---
 
-Run Script as a Systemd Service
-
-## 1. Allow passwordless sudo for the script
-
-
-
-## Edit sudoers:
-
+## 🔁 Run as a Systemd Service
+1. Allow Passwordless sudo
+Edit sudoers:
+Bash
 sudo visudo
-
-Add the line (replace my-pc and script path):
-
+Add (replace username and path):
+Bash
 my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
-
-# 2. Create systemd service
-
-
-
+2. Create Service
+Bash
 sudo nano /etc/systemd/system/auto-update.service
-
-Add:
-
+Paste:
+INI
 [Unit]
-Description=Run Auto Update Script
+Description=Automatic System Update Script
 After=network.target
 
 [Service]
+Type=simple
 ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
-Restart=on-failure
 WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
+Restart=on-failure
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 [Install]
 WantedBy=multi-user.target
-
-3. Enable and start the service
-## 3. Enable and start the service
-
-
-
+3. Enable & Start
+Bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
-
-## 4. Check service logs
-
-
-
+4. Check Logs
+Bash
 journalctl -u auto-update.service -e
+## ⚠️ Notes
+Designed for Ubuntu-based systems
+Uses safe defaults (non-destructive cleanup)
+Review script before running on critical systems
+Update paths and usernames to match your setup
+## 📌 Philosophy
+Clean enough for privacy, but not so clean that you lose visibility.
