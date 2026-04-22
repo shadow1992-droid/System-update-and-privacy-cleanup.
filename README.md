@@ -1,4 +1,4 @@
-# Shaun's Ubuntu Update & Privacy Script (Lite Version)
+# Shaun's Ubuntu Update & Privacy Script
 A safer, balanced version of the update script that:
 Keeps important system logs for troubleshooting
 Performs full system + firmware updates
