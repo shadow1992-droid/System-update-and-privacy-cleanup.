@@ -1,4 +1,4 @@
-# 🛡️ Shaun’s Ubuntu Update & Privacy Script
+LP# 🛡️ Shaun’s Ubuntu Update & Privacy Script
 
 A balanced update and cleanup script that keeps your system secure, clean, and still debuggable.
 
@@ -58,18 +58,18 @@ Bash
 sudo nano /etc/systemd/system/auto-update.service
 Paste:
 INI
-[Unit]
+```[Unit]
 Description=Automatic System Update Script
 After=network.target
 
-[Service]
+```[Service]
 Type=simple
 ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
 WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
 Restart=on-failure
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-[Install]
+```[Install]
 WantedBy=multi-user.target
 3. Enable & Start
 Bash
