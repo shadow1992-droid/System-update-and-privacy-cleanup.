@@ -39,17 +39,10 @@ Temporary files (/tmp, /var/tmp)
 Does NOT remove:
 Bash history
 User configuration files
-# 🌍 Browser Cleanup (Safe)
-Clears cache only
-Keeps:
-History
-Cookies
-Logins
-Sessions
-Supported:
-Firefox / Mozilla
-Chrome / Chromium
-Brave
+# 🌍  BRAVE BROWSER CLEANUP 
+
+
+
 # 🚀 Usage
 1. Save the script
 Bash
