@@ -69,15 +69,6 @@ Clean enough for privacy, but not so clean that you lose visibility.
 
 ---
 
-## 🚀 Usage
-
-bash
-nano update-lite.sh
-chmod +x update-lite.sh
-sudo ./update-lite.sh
-
-
-
 ## 🔁 Run as a Systemd Service
 ## 1. Allow Passwordless sudo
 Edit sudoers:
@@ -92,7 +83,7 @@ sudo nano /etc/systemd/system/auto-update.service
 Paste:
 INI
 
-,,,[Unit]
+[Unit]
 Description=Automatic System Update Script
 After=network.target
 
@@ -113,3 +104,11 @@ sudo systemctl enable --now auto-update.service
 ## 4. Check Logs
 Bash
 journalctl -u auto-update.service -e
+
+
+## 🚀 Usage
+
+bash
+nano update-lite.sh
+chmod +x update-lite.sh
+sudo ./update-lite.sh
