@@ -71,7 +71,7 @@ Clean enough for privacy, but not so clean that you lose visibility.
 
 ## 🚀 Usage
 
-```bash
+bash
 nano update-lite.sh
 chmod +x update-lite.sh
 sudo ./update-lite.sh
