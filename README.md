@@ -78,8 +78,8 @@ Bash
 my-pc ALL=(root) NOPASSWD: /home/my-pc/Documents/Notes/Scripts/auto-update.sh
 ## 2. Create Service
 sudo nano /etc/systemd/system/auto-update.service
+
 Paste:
-INI
 
 [Unit]
 Description=Automatic System Update Script
