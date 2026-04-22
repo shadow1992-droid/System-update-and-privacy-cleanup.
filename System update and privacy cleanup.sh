@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-echo "Starting Shaun's Ubuntu system update..."
+echo "Starting Shaun's Ubuntu system update and privacy cleanup complete. ✅"
 
 # Disable phased updates
 echo 'APT::Get::Always-Include-Phased-Updates "true";' > /etc/apt/apt.conf.d/99phased-updates
