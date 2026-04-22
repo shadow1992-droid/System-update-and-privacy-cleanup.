@@ -6,7 +6,7 @@ A balanced update and cleanup script that keeps your system secure, clean, and s
 
 ## ⚙️ Features
 
-### 🔄 System Updates
+## 🔄 System Updates
 - Bypasses phased updates  
 - Updates package lists  
 - Runs:
