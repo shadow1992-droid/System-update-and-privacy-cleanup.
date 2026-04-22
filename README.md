@@ -96,14 +96,14 @@ INI
 Description=Automatic System Update Script
 After=network.target
 
-```[Service]
+[Service]
 Type=simple
 ExecStart=/home/my-pc/Documents/Notes/Scripts/auto-update.sh
 WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
 Restart=on-failure
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-```[Install]
+[Install]
 WantedBy=multi-user.target
 3. Enable & Start
 Bash
