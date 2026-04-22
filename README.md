@@ -93,7 +93,6 @@ Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 WantedBy=multi-user.target
 ## 3. Enable & Start
-Bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now auto-update.service
 ## 4. Check Logs
