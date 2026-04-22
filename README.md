@@ -98,5 +98,5 @@ sudo systemctl enable --now auto-update.service
 ## 4. Check Logs
 journalctl -u auto-update.service -e
 ## 🚀 Usage
-nano Syste-update-and-privacy-cleanup.sh
+nano System-update-and-privacy-cleanup.sh
 sudo ./System-update-and-privacy-cleanup.sh
