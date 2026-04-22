@@ -43,32 +43,7 @@ Non-destructive cleanup that improves privacy without breaking diagnostics.
 - Removes `wget` HSTS files  
 - Keeps `curl` configs (may contain user settings)  
 
----
-
-## 🧑‍💻 User Cleanup
-- Clears:
-  - Thumbnail cache  
-  - Temp files (`/tmp`, `/var/tmp`)  
-- Keeps:
-  - Bash history  
-  - User config files  
-
----
-
-## 🌍 Brave Browser Cleanup
-- Clears cache and browsing data (history, cookies, sessions)  
-- Optional full wipe available (disabled by default)  
-
----
-
-## 🚀 Usage
-
-```bash
-nano update-lite.sh
-chmod +x update-lite.sh
-sudo ./update-lite.sh
-
----
+------
 
 ## 🔁 Run as a Systemd Service
 1. Allow Passwordless sudo
@@ -110,3 +85,27 @@ Review script before running on critical systems
 Update paths and usernames to match your setup
 ## 📌 Philosophy
 Clean enough for privacy, but not so clean that you lose visibility.
+
+## 🧑‍💻 User Cleanup
+- Clears:
+  - Thumbnail cache  
+  - Temp files (`/tmp`, `/var/tmp`)  
+- Keeps:
+  - Bash history  
+  - User config files  
+
+---
+
+## 🌍 Brave Browser Cleanup
+- Clears cache and browsing data (history, cookies, sessions)  
+- Optional full wipe available (disabled by default)  
+
+---
+
+## 🚀 Usage
+
+```bash
+nano update-lite.sh
+chmod +x update-lite.sh
+sudo ./update-lite.sh
+
