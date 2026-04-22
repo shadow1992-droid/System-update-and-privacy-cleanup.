@@ -92,7 +92,7 @@ WorkingDirectory=/home/my-pc/Documents/Notes/Scripts
 Restart=on-failure
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-[Install],,,
+[Install]
 
 WantedBy=multi-user.target
 ## 3. Enable & Start
