@@ -70,7 +70,7 @@ sudo ./update-lite.sh
 
 ---
 
-## Run Script as a Systemd Service
+Run Script as a Systemd Service
 
 ## 1. Allow passwordless sudo for the script
 
